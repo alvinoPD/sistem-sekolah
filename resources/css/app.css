@@ -1,0 +1,450 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+:root {
+    color-scheme: light;
+    font-family: var(--font-sans);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #f4f7fb;
+    color: #172033;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background:
+        radial-gradient(ellipse at top left, rgb(219 234 254 / 55%), transparent 38rem),
+        #f4f7fb;
+    color: #172033;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+body > h1,
+body > h2,
+body > form,
+body > p,
+body > ul {
+    width: min(100% - 2rem, 28rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+h1,
+h2,
+p {
+    margin-top: 0;
+}
+
+h1,
+h2 {
+    color: #14213d;
+    letter-spacing: -0.035em;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+h2 {
+    font-size: 1.35rem;
+}
+
+a {
+    color: #2457d6;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 160ms ease;
+}
+
+a:hover {
+    color: #173da5;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    min-height: 2.75rem;
+    padding: 0.65rem 1rem;
+    border: 0;
+    border-radius: 0.75rem;
+    background: #2457d6;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+button:hover {
+    background: #173da5;
+    box-shadow: 0 0.5rem 1rem rgb(36 87 214 / 18%);
+    transform: translateY(-1px);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgb(59 130 246 / 35%);
+    outline-offset: 3px;
+}
+
+input,
+textarea {
+    width: 100%;
+    min-height: 2.9rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid #d5deeb;
+    border-radius: 0.75rem;
+    background: #fff;
+    color: #172033;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #5683ed;
+    box-shadow: 0 0 0 4px rgb(86 131 237 / 13%);
+    outline: none;
+}
+
+input[type='file'] {
+    height: auto;
+    padding: 0.55rem;
+    color: #526078;
+}
+
+input[type='file']::file-selector-button {
+    margin-right: 0.75rem;
+    padding: 0.45rem 0.7rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background: #eaf0ff;
+    color: #2457d6;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+textarea {
+    min-height: 10rem;
+    resize: vertical;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #273653;
+    font-size: 0.94rem;
+    font-weight: 700;
+}
+
+small {
+    display: block;
+    margin-top: 0.4rem;
+    color: #68768d;
+    font-size: 0.82rem;
+}
+
+ul {
+    padding: 0.85rem 1rem 0.85rem 2.3rem;
+    border: 1px solid #fecaca;
+    border-radius: 0.8rem;
+    background: #fff1f2;
+    color: #9f1239;
+}
+
+/* Login and registration pages */
+body:has(> form[action*='login.authenticate']),
+body:has(> form[action*='register']) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 0;
+}
+
+body:has(> form[action*='login.authenticate']) > h1,
+body:has(> form[action*='register']) > h1 {
+    width: min(100% - 2rem, 28rem);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+body:has(> form[action*='login.authenticate']) > form,
+body:has(> form[action*='register']) > form {
+    display: grid;
+    gap: 1.1rem;
+    padding: clamp(1.4rem, 5vw, 2rem);
+    border: 1px solid #e5eaf2;
+    border-radius: 1.25rem;
+    background: rgb(255 255 255 / 94%);
+    box-shadow: 0 1.25rem 3.5rem rgb(23 32 51 / 9%);
+}
+
+body:has(> form[action*='login.authenticate']) > form > div,
+body:has(> form[action*='register']) > form > div {
+    display: grid;
+    gap: 0.25rem;
+}
+
+body:has(> form[action*='login.authenticate']) > form > button,
+body:has(> form[action*='register']) > form > button {
+    width: 100%;
+    margin-top: 0.3rem;
+}
+
+body:has(> form[action*='login.authenticate']) > p,
+body:has(> form[action*='register']) > p {
+    margin-top: 1.25rem;
+    color: #65728a;
+    text-align: center;
+}
+
+/* Post creation and editing */
+body:has(> form[enctype='multipart/form-data']) {
+    padding: clamp(2rem, 7vw, 5rem) 1rem;
+}
+
+body:has(> form[enctype='multipart/form-data']) > h1,
+body:has(> form[enctype='multipart/form-data']) > h2 {
+    width: min(100%, 42rem);
+    margin: 0 auto 1.4rem;
+}
+
+body:has(> form[enctype='multipart/form-data']) > form {
+    display: grid;
+    gap: 1.2rem;
+    width: min(100%, 42rem);
+    box-sizing: border-box;
+    margin: 0 auto 1rem;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    border: 1px solid #e5eaf2;
+    border-radius: 1.25rem;
+    background: #fff;
+    box-shadow: 0 1rem 2.75rem rgb(23 32 51 / 8%);
+}
+
+body:has(> form[enctype='multipart/form-data']) > form > div {
+    display: grid;
+    gap: 0.25rem;
+}
+
+body:has(> form[enctype='multipart/form-data']) > form > button {
+    justify-self: start;
+    min-width: 10rem;
+}
+
+body:has(> form[enctype='multipart/form-data']) > a {
+    display: block;
+    width: min(100%, 42rem);
+    margin: 0.75rem auto;
+}
+
+body:has(> form[enctype='multipart/form-data']) > form > img {
+    width: min(100%, 18rem);
+    height: 12rem;
+    border-radius: 0.85rem;
+    object-fit: cover;
+}
+
+/* Admin and user post listings */
+body:has(> header) > header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    padding: 1.25rem max(1rem, calc((100% - 76rem) / 2));
+    border-bottom: 1px solid #e5eaf2;
+    background: rgb(255 255 255 / 90%);
+    box-shadow: 0 0.35rem 1.5rem rgb(23 32 51 / 4%);
+}
+
+body:has(> header) > header h1 {
+    flex: 1 1 18rem;
+    margin: 0;
+}
+
+body:has(> header) > header p {
+    margin: 0;
+    color: #65728a;
+}
+
+body:has(> header) > header > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.95rem;
+    border-radius: 0.75rem;
+    background: #eaf0ff;
+}
+
+body:has(> header) > header form {
+    margin: 0;
+}
+
+body:has(> header) > header button {
+    background: #eef2f7;
+    color: #34425b;
+}
+
+body:has(> header) > header button:hover {
+    background: #dce4ef;
+    box-shadow: none;
+}
+
+body:has(> header) > main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    gap: 1.25rem;
+    width: min(100% - 2rem, 76rem);
+    margin: 2rem auto;
+}
+
+body:has(> header) > main > article {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    padding: 1.15rem;
+    overflow: hidden;
+    border: 1px solid #e5eaf2;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 0.65rem 1.8rem rgb(23 32 51 / 5%);
+    transition: box-shadow 180ms ease, transform 180ms ease;
+}
+
+body:has(> header) > main > article:hover {
+    box-shadow: 0 1rem 2.3rem rgb(23 32 51 / 10%);
+    transform: translateY(-2px);
+}
+
+body:has(> header) > main > article img {
+    width: 100%;
+    height: 12rem;
+    margin-bottom: 1rem;
+    border-radius: 0.7rem;
+    background: #edf2f8;
+    object-fit: cover;
+}
+
+body:has(> header) > main > article h2 {
+    margin-bottom: 0.5rem;
+}
+
+body:has(> header) > main > article p {
+    margin-bottom: 1rem;
+    color: #65728a;
+}
+
+body:has(> header) > main > article form {
+    display: inline;
+    margin: 0 0 0 0.75rem;
+}
+
+body:has(> header) > main > article button {
+    min-height: 2.25rem;
+    padding: 0.35rem 0.75rem;
+    background: #fff0f0;
+    color: #b42332;
+    font-size: 0.9rem;
+}
+
+body:has(> header) > main > article button:hover {
+    background: #ffe0e0;
+    box-shadow: none;
+}
+
+body:has(> header) > main > p {
+    grid-column: 1 / -1;
+    padding: 2rem;
+    border: 1px dashed #cbd5e1;
+    border-radius: 1rem;
+    background: #fff;
+    color: #65728a;
+    text-align: center;
+}
+
+body:has(> header) > nav[role='navigation'] {
+    width: min(100% - 2rem, 76rem);
+    margin: 0 auto 2rem;
+}
+
+/* Post detail */
+body:not(:has(> header, > form[enctype='multipart/form-data'])) > main {
+    width: min(100% - 2rem, 54rem);
+    margin: clamp(2rem, 8vw, 5rem) auto;
+    padding: clamp(1.25rem, 5vw, 2.5rem);
+    border: 1px solid #e5eaf2;
+    border-radius: 1.25rem;
+    background: #fff;
+    box-shadow: 0 1rem 2.75rem rgb(23 32 51 / 8%);
+}
+
+body:not(:has(> header, > form[enctype='multipart/form-data'])) > main > article h1 {
+    margin-bottom: 1.25rem;
+}
+
+body:not(:has(> header, > form[enctype='multipart/form-data'])) > main > article img {
+    display: block;
+    width: 100%;
+    max-height: 32rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.9rem;
+    background: #edf2f8;
+    object-fit: cover;
+}
+
+body:not(:has(> header, > form[enctype='multipart/form-data'])) > main > article p {
+    color: #46546c;
+    white-space: pre-wrap;
+}
+
+body:not(:has(> header, > form[enctype='multipart/form-data'])) > main > article small {
+    margin-bottom: 1.5rem;
+}
+
+body:not(:has(> header, > form[enctype='multipart/form-data'])) > main > a {
+    display: inline-flex;
+    margin: 0.5rem 0.75rem 0 0;
+}
+
+@media (max-width: 640px) {
+    body:has(> header) > header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    body:has(> header) > main {
+        grid-template-columns: 1fr;
+        margin-top: 1.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
